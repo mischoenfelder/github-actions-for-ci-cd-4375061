@@ -1,10 +1,13 @@
 from fastapi import FastAPI, HTTPException
 import json
+from pathlib import Path
+
+Path = Path(__file__).parent 
 
 app = FastAPI()
 
 # Load data from file
-with open("data.json", "r") as f:
+with open(Path / "data.json", "r") as f:
     data = json.load(f)
 
 
