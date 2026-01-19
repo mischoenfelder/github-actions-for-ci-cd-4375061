@@ -4,7 +4,8 @@ const fs = require('fs');
 const winston = require('winston');
 
 // Load data from file
-const data = JSON.parse(fs.readFileSync('data.json'));
+const path = require('path');
+const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'data.json')));
 
 // Configure the logger to write to STDOUT
 const logger = winston.createLogger({
