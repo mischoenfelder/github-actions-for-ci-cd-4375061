@@ -1,5 +1,7 @@
 import unittest
 import json
+import os
+from pathlib import Path
 from fastapi.testclient import TestClient
 from main import app
 
@@ -7,7 +9,10 @@ from main import app
 class TestApp(unittest.TestCase):
     def setUp(self):
         self.client = TestClient(app)
-        with open("data.json", "r") as f:
+        # Get the directory where this test file is located
+        test_dir = Path(__file__).parent
+        data_file = test_dir / "data.json"
+        with open(data_file, "r") as f:
             self.data = json.load(f)
 
     def test_read_data(self):
